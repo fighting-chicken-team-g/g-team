@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
+    root 'homes#top'
+  end
+
+  namespace :admin do
     get 'orders/show'
   end
   namespace :admin do
@@ -17,11 +21,10 @@ Rails.application.routes.draw do
     get 'foods/show'
     get 'foods/edit'
   end
-  namespace :admin do
-    get 'homes/top'
+
+  scope module: :public do
+    root 'homes#top'
   end
-  devise_for :admins
-  devise_for :end_users
 
   namespace :public do
     get 'deliveries/index'
