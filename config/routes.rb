@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
-    resource :end_users, only: [:show, :edit]
+    get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm'
+    get '/end_users/mypage' => 'end_users#show'
+    resource :end_users, only: [:edit]
     resources :foods, only: [:index, :show]
     resources :carts, only: [:index]
     resources :orders, only: [:index, :show]
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
   devise_scope :admin do
     post 'admins/sign_in', to: 'admin/sessions#sign_in'
   end
-  
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
