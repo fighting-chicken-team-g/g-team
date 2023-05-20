@@ -2,7 +2,6 @@ class Admin::FoodsController < ApplicationController
 
   def new
   @food = Food.new
-  #@options = Genre.all
   end
   
   def index
@@ -12,7 +11,7 @@ class Admin::FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-      if @food.save!
+      if @food.save
         redirect_to admin_foods_path
       else
         render :new
@@ -41,7 +40,7 @@ class Admin::FoodsController < ApplicationController
   private
   # ストロングパラメータ
   def food_params
-    params.require(:food).permit(:food_image, :food_name, :introduction, :tax_free_price, :sales_status)
+    params.require(:food).permit(:food_image, :food_name, :introduction, :genre_id, :tax_free_price, :sales_status)
     #, :genre_id (:genre)カラムはintegerにを持たせるとエラーが出るため持たせかたを考える。
   end
 end

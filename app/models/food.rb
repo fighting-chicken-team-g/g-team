@@ -11,7 +11,7 @@ class Food < ApplicationRecord
   end
   
   def add_tax_sales_price
-  (self.tax_free_price * 1.08).round
+  (tax_free_price * 1.08).round
   end
   
   #バリデーションを後で入れるvali

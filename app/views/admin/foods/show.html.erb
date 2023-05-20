@@ -11,11 +11,11 @@
   </tr>
   <tr>
     <th>ジャンル</th>
-    <td><%= @food_show.genre_name %></td>
+    <td><%= @food_show.genre.genre_name %></td>
   </tr>
   <tr>
     <th>税込価格（税抜価格）</th>
-    <td><%= add_tax_sales_price(@food_show.tax_free_price) %></td>
+    <td><%= @food_show.add_tax_sales_price %>(<%= @food_show.tax_free_price %>)</td>
   </tr>
   <tr>
     <th>販売ステータス</th>
@@ -24,33 +24,6 @@
 
 </table>
     <div class="button text-center">
-    <%= f.submit '新規登録', class:"btn btn-sm btn-success" %>
+    <%= link_to '新規登録', new_admin_food_path, class:"btn btn-sm btn-success" %>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<#%= @food_show.each do |f| %>
-<#%= f.label :"商品名" %>
-<#%= f.food_name %>
-<#%= f.label :"説明" %>
-<#%= f.introduction %>
-<#%= f.label :"ジャンル" %>
-<#%= f.genre_id %>
-<#%= f.label :"税抜価格" %>
-<#%= f.tax_free_price %>
-<#%= f.label :"販売ステータス" %>
-<#%= f.sales_status %>
-<#%= image_tag food.food_image, size:'50x50' %>記述に自信無い
-<#%= f.submit '新規登録', class:"btn btn-sm btn-success" %>
 
