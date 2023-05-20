@@ -6,13 +6,17 @@ class Food < ApplicationRecord
   
   has_one_attached :food_image
   
-  def get_food_image
-    (food_image.attached?) ? food_image : 'no_image.jpg'
+  def get_food_image(width, height)
+    food_image.variant(resize_to_limit: [width, height]).processed
   end
   
   def add_tax_sales_price
   (tax_free_price * 1.08).round
   end
-  
-  #バリデーションを後で入れるvali
+  validates :food_image, presence: true
+  validates :genre_id, presence: true
+  validates :food_name, presence: true
+  validates :introduction, presence: true
+  validates :tax_free_price, presence: true
+  #validates :sales_status, presence: true これが入るとエラーになる。
 end

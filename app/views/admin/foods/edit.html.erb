@@ -1,6 +1,10 @@
+<div class="container">
+  <div class="row mt-5 offset-md-2">
 <h1>商品編集</h1>
-  
-  <%= form_with model: @food_edit, url: admin_item_path, method: :patch do |f| %>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-md-4">
+  <%= form_with model: @food_edit, url: admin_food_path, method: :patch do |f| %>
         <table>
           <tr>
             <td><%= f.label :"商品画像" %></td>

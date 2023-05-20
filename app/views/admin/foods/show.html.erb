@@ -1,29 +1,38 @@
-<h1>商品詳細</h1>
-
-<table>
-  <tr>
-    <th>商品名</th>
-    <td><%= @food_show.food_name %></td>
-  </tr>
-  <tr>
-    <th>商品説明</th>
-    <td><%= @food_show.introduction %></td>
-  </tr>
-  <tr>
-    <th>ジャンル</th>
-    <td><%= @food_show.genre.genre_name %></td>
-  </tr>
-  <tr>
-    <th>税込価格（税抜価格）</th>
-    <td><%= @food_show.add_tax_sales_price %>(<%= @food_show.tax_free_price %>)</td>
-  </tr>
-  <tr>
-    <th>販売ステータス</th>
-    <td><%= @food_show.sales_status %></td>
-  </tr>
-
-</table>
-    <div class="button text-center">
-    <%= link_to '新規登録', new_admin_food_path, class:"btn btn-sm btn-success" %>
+<div class="container">
+  <div class="row mt-5 offset-md-1">
+    <h1>商品詳細</h1>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag @food_show.get_food_image(100, 100)%>
+    </div>
+    <div class="col-8">
+      <table>
+        <tr>
+          <th>商品名</th>
+          <td><%= @food_show.food_name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @food_show.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @food_show.genre.genre_name %></td>
+        </tr>
+        <tr>
+          <th>税込価格（税抜価格）</th>
+          <td><%= @food_show.add_tax_sales_price %>(<%= @food_show.tax_free_price %>)</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td><%= @food_show.sales_status %></td>
+        </tr>
+      </table>
+      <div class="button text-center">
+      <%= link_to '商品編集', edit_admin_food_path(@food_show), class:"btn btn-sm btn-success" %>
+      </div>
     </div>
 
+  </div>
+</div>

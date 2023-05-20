@@ -4,7 +4,14 @@
   </div>
   <div class="row">
     <div class="col-8 offset-md-4">
-
+      <% if @food.errors.any? %>
+      <%= @food.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @food.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
         <%= form_with model: @food, url: admin_foods_path, local: true, method: :post do |f| %>
       <table>
           <tr>
