@@ -9,7 +9,7 @@
         <ul class="navbar-nav ml-auto">
         <% if end_user_signed_in? %>
           <li>
-            <%= link_to 'マイページ', end_users_path, class:'nav-link text-dark btn btn-outline-secondary m-2' %>
+            <%= link_to 'マイページ', end_users_mypage_path, class:'nav-link text-dark btn btn-outline-secondary m-2' %>
           </li>
           <li>
             <%= link_to '商品一覧', foods_path, class:'nav-link text-dark btn btn-outline-secondary m-2' %>
