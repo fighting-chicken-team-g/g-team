@@ -14,4 +14,5 @@ class Food < ApplicationRecord
   (self.tax_free_price * 1.08).round
   end
   
+  #バリデーションを後で入れるvali
 end
