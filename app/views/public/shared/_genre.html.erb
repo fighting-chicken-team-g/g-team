@@ -1,4 +1,4 @@
-<%#table class="table table-bordered genre_search_table">
+<table class="table table-bordered genre_search_table">
   <thead>
     <tr class="table-head">
     <th class="genre_search_head">ジャンル検索</th>
@@ -6,11 +6,11 @@
     </thead>
 <tbody>
    <% genres.each do |genre| %>
-<%#tr>
+<tr>
 <td class="table-body">
   <%= link_to genre.name, products_path(genre_id: genre.id),class:"genre_search_name" %>
-<%#/td>
+</td>
 </tr>
 <% end %>
-<%#/tbody>
+</tbody>
 </table>

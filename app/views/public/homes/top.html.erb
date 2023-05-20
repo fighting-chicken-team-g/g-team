@@ -1,27 +1,23 @@
+<div class="container px-5 px-sm-0">
 
-<!--サイドバー!入れる-->
 <div class="row">
     <div class="col-2">
-      <%= render'public/shared/genre' %>
+      <%= render'public/shared/genre', genres: @genres %>
     </div>
-    <div class="col-8">
+   <%#div class="col-8">
       <%= yield %>
-    </div>
-
-
-<div class="jumbotron" style="background-image: url('assets/images/chocolate-cake-g9102542af_1920.jpg');">
-  <h1>ようこそ、ながのCAKEへ！</h1>
-  <p>このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。<br>
 </div>
 
+<div class="row text-center" style="align-items: center;">
+ <h1 class="px-3 mx-auto"> 
+<div class="jumbotron" style="background-image: url('assets/images/chocolate-cake-g9102542af_1920.jpg');">
+  <h1>ようこそ、ながのCAKEへ！</h1>
+  <p><h5>このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。</h5><br>
+</div>
+</div>
 
-
-
-
-
-<div class="container" style="height: 100vh;">
   <div class="row text-center" style="align-items: center;">
     <h1 class="px-3 mx-auto">新着商品</h1>
   </div>
