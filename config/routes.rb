@@ -19,9 +19,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
-    get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm'
+    get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
+    patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
     get '/end_users/mypage' => 'end_users#show'
-    resource :end_users, only: [:edit]
+    get 'end_users/infomation/edit' => 'end_users#edit', as: 'edit_end_users'
+    patch 'end_users/update' => 'end_users#update'
     resources :foods, only: [:index, :show]
     resources :carts, only: [:index]
     resources :orders, only: [:index, :show]
