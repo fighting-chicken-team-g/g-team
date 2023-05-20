@@ -1,13 +1,47 @@
 class Admin::FoodsController < ApplicationController
-  def index
-  end
 
   def new
+  @food = Food.new
+  #@options = Genre.all
+  end
+  
+  def index
+    @foods = Food.all
+
+  end
+
+  def create
+    @food = Food.new(food_params)
+      if @food.save!
+        redirect_to admin_foods_path
+      else
+        render :new
+      end
   end
 
   def show
+    @food_show = Food.find(params[:id])
   end
 
   def edit
+    @food_edit = Food.find(params[:id])
+    
+    
+  end
+  def update
+    @food =Food.find(params[:id])
+    if @food.update(food_params)
+      redirect_to admin_foods_path
+    else
+      #@books = @user.books render先で使うかどうか
+      render "edit"
+    end
+  end
+  
+  private
+  # ストロングパラメータ
+  def food_params
+    params.require(:food).permit(:food_image, :food_name, :introduction, :tax_free_price, :sales_status)
+    #, :genre_id (:genre)カラムはintegerにを持たせるとエラーが出るため持たせかたを考える。
   end
 end

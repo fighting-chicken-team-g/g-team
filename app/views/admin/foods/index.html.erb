@@ -1,2 +1,24 @@
-<h1>Admin::Foods#index</h1>
-<p>Find me in app/views/admin/foods/index.html.erb</p>
+<h1>商品一覧</h1>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.id %></td>
+        <td><%= link_to admin_food_path(food.id) do %><%= food.food_name %><% end %></td>
+        <td><%= link_to food.food_name %></td>
+        <td><%= food.tax_free_price %></td>
+        <td><%#= food.genre %></td>
+        <td><%= food.sales_status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
