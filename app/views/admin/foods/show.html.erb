@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-4">
-      <%= image_tag @food_show.get_food_image(100, 100)%>
+      <%= image_tag @food_show.get_food_image(300, 400)%>
     </div>
     <div class="col-8">
       <table>
@@ -26,13 +26,12 @@
         </tr>
         <tr>
           <th>販売ステータス</th>
-          <td><%= @food_show.sales_status %></td>
+          <td><%= @food_show.sales_status.is_active %></td>
         </tr>
       </table>
       <div class="button text-center">
       <%= link_to '商品編集', edit_admin_food_path(@food_show), class:"btn btn-sm btn-success" %>
       </div>
     </div>
-
   </div>
 </div>

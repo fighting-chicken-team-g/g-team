@@ -5,8 +5,8 @@ class Admin::FoodsController < ApplicationController
   end
   
   def index
-    @foods = Food.all
-
+    #@foods = Food.all
+    @foods = Food.page(params[:page])
   end
 
   def create
@@ -23,6 +23,7 @@ class Admin::FoodsController < ApplicationController
   end
 
   def edit
+    @food = Food.new
     @food_edit = Food.find(params[:id])
     
     
@@ -32,7 +33,6 @@ class Admin::FoodsController < ApplicationController
     if @food.update(food_params)
       redirect_to admin_foods_path
     else
-      #@books = @user.books render先で使うかどうか
       render "edit"
     end
   end

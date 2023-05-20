@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5 offset-md-2">
-<h1>商品編集</h1>
+  <h1>商品編集</h1>
   </div>
   <div class="row">
     <div class="col-8 offset-md-4">
@@ -29,10 +29,10 @@
           <tr>
             <td><%= f.label :"販売ステータス" %></td>
             <td>
-              <%= f.radio_button :sales_status, true %>
-              <%= f.label :status_true, "販売中" %>
-              <%= f.radio_button :sales_status, false %>
-              <%= f.label :status_false, "販売停止中" %>
+            <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
             </td>
           </tr>
           <tr>
@@ -40,3 +40,5 @@
       </table>
     <%= f.submit '変更を保存', class:"text-center btn btn-success" %>
   <% end %>
+  </div>
+</div>
