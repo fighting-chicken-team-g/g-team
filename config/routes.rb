@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :edit]
     resources :foods, only: [:new, :index, :show, :edit]
     resources :orders, only: [:show]
-    resources :genres, only: [:index, :edit]
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :deliveries, only: [:index, :edit]
   end
 
