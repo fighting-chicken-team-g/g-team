@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :foods, only: [:index, :show]
     resources :carts, only: [:index]
     resources :orders, only: [:index, :show]
-    resources :deliveries, only: [:index, :edit]
+    resources :deliveries, only: [:index, :edit, :create, :destroy, :update]
   end
 
   devise_scope :admin do

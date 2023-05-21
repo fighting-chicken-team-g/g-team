@@ -1,6 +1,7 @@
 class Public::DeliveriesController < ApplicationController
   def index
     @deliveries = Delivery.all
+    @delivery = Delivery.new
   end
 
   def edit
@@ -10,24 +11,25 @@ class Public::DeliveriesController < ApplicationController
 
   def create
      @deliveries = Delivery.new(delivery_params)
+     @deliveries.end_user_id = current_end_user.id
      if @deliveries.save
-      redirect_to edit_delivery_path(@deliveries)
+      redirect_to deliveries_path
      end
   end
 
   def update
     @deliveries = Delivery.find(params[:id])
-    if @delivery.update(delivery_params)
-      redirect_to delivery_path(@book.id)
+    if @deliveries.update(delivery_params)
+      redirect_to deliveries_path
     else
       render "edit"
     end
-   
+
   end
 
   def destroy
-    @deliveries = end_user.find_by(end_user_id: @deliveries.id)
-    deliveries.destroy
+    @deliveries = Delivery.find(params[:id])
+    @deliveries.destroy
     redirect_to request.referer
   end
 end
