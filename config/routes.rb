@@ -10,16 +10,20 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :end_users, only: [:index, :show, :edit]
-    resources :foods, only: [:new, :index, :show, :edit]
+    resources :foods, only: [:new, :index, :show, :edit, :create, :update]
     resources :orders, only: [:show]
-    resources :genres, only: [:index, :edit]
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :deliveries, only: [:index, :edit]
   end
 
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
-    resource :end_users, only: [:show, :edit]
+    get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
+    patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
+    get '/end_users/mypage' => 'end_users#show'
+    get 'end_users/infomation/edit' => 'end_users#edit', as: 'edit_end_users'
+    patch 'end_users/update' => 'end_users#update'
     resources :foods, only: [:index, :show]
     resources :carts, only: [:index]
     resources :orders, only: [:index, :show]
@@ -29,7 +33,7 @@ Rails.application.routes.draw do
   devise_scope :admin do
     post 'admins/sign_in', to: 'admin/sessions#sign_in'
   end
-  
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

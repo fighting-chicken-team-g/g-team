@@ -1,2 +1,57 @@
-<h1>Admin::Foods#new</h1>
-<p>Find me in app/views/admin/foods/new.html.erb</p>
+<div class="container">
+  <div class="row mt-5 offset-md-2">
+    <h3>商品新規登録</h3>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-md-4">
+      <% if @food.errors.any? %>
+      <%= @food.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @food.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+        <%= form_with model: @food, url: admin_foods_path, local: true, method: :post do |f| %>
+      <table>
+          <tr>
+            <td><%= f.label :"商品画像" %></td>
+            <td><%= f.file_field :food_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"商品名" %></td>
+            <td><%= f.text_field :food_name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"商品説明" %></td>
+            <td><%= f.text_field :introduction, style: "width:80%", rows: "5" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"ジャンル" %></td>
+            <td>
+                <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "選択して下さい" %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.label :"税抜価格" %></td>
+            <td><%= f.text_field :tax_free_price %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"販売ステータス" %></td>
+            <td>
+            <%= f.radio_button :sales_status, true %>
+            <%= f.label :sales_status, "販売中", {value: :true, style: "display: inline-block;"} %>
+            <%= f.radio_button :sales_status, false %>
+            <%= f.label :sales_status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+            </td>
+          </tr>
+          <tr>
+          </tr>
+      </table>
+        <div class="button text-center">
+        <%= f.submit '新規登録', class:"btn btn-sm btn-success" %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
