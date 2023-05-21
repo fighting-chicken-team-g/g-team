@@ -1,27 +1,40 @@
 
     <div class="col-xs-3">
-        <%= render 'genre_serch_form', genres: @genres %>
+        <%#= render 'shared/genre', genres: @genres %>
     </div>
     <div class="col-xs-9">
-        <h2><%= "#{@index}一覧 （全#{@products_all.count}件）" %></h2>
-        <% @products.each do |product| %>
-            <div class="product-box">
+        <h2><%= "#{@index}一覧 （全#{@foods_all.count}件）" %></h2>
+        <% @foods.each do |food| %>
+            <div class="food-box">
                 <table class="table">
                     <tr>
-                        <th><%= link_to product_path(product) do %>
-                            <%= attachment_image_tag(product, :image,size: "180x130", fallback: "no_image.jpg") %>
+                        <th><%= link_to food_path(food) do %>
+                            <%= attachment_image_tag(food, :image,size: "180x130", fallback: "no_image.jpg") %>
                             <% end %>
                         </th>
                     </tr>
                     <tr>
-                        <th><%= link_to product.name, product_path(product) %></th>
+                        <th><%= link_to food.name, food_path(food) %></th>
                     </tr>
                     <tr>
-                        <th>￥<%= (product.price * 1.1).to_i %></th>
+                        <th>￥<%= (food.price * 1.1).to_i %></th>
                     </tr>
                 </table>
             </div>
         <% end %>
-        <%= paginate @products %>
+        <%= paginate @foods %>
     </div>
 </div><div class="row login-row">
+    
+    
+    div id="column" class="column04">
+<h3>4個並び</h3>
+<ul>
+<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
+<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
+<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
+<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
+<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
+<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
+</ul>
+</div>

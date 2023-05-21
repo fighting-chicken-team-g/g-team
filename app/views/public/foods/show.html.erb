@@ -1,28 +1,21 @@
-<h1>商品一覧</h1>
-
-<div class="container px-5 px-sm"></div>
-<div class="row">
+<div class="row login-row">
 	<div class="col-xs-3">
-	  
-	  
-	  
-	  
-		<%= render 'genre_serch_form', genres: @genres %>
+		<%#= render 'genre_serch_form', genres: @genres %>
 	</div>
 	<div class="col-xs-offset-1">
 		<div class="product-image">
-			<%= attachment_image_tag(@product, :image, fallback: "no_image.jpg",size: "300x217" ) %>
+			<%= attachment_image_tag(@food, :image, fallback: "no_image.jpg",size: "300x217" ) %>
 		</div>
 	</div>
 	<div class="col-xs-5">
 		<div class="detail">
-			<h2><%= @product.name %></h2>
-			<p><%= @product.explanation %></p>
-			<h3 class="product-price">￥<%= (@product.price * 1.1).to_i %><span>（税込）</span></h3>
-			<%= form_with(model: @inside_cart, url: inside_carts_path, method: :post, local: true) do |f| %>
+			<h2><%= @food.name %></h2>
+			<p><%= @food.explanation %></p>
+			<h3 class="food-price">￥<%= (@food.price * 1.1).to_i %><span>（税込）</span></h3>
+			<%= form_with(model: @carts, url: carts_path, local: true) do |f| %>
 		      <%= f.label :quantity, "個数選択" %>
 		      <%= f.number_field :quantity, min: 1, max: 100, placeholder: '個数選択', class:"quantity-select-form" %>
-		      <%= f.hidden_field :id, :value => @product.id %>
+		      <%= f.hidden_field :id, :value => @food.id %>
 		      <%= f.submit "カートに入れる", class: "btn btn-primary" %>
 		    <% end %>
 		</div>
@@ -31,14 +24,5 @@
 
 
 
-<div id="column" class="column04">
-<h3>4個並び</h3>
-<ul>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-</ul>
-</div>
+
+
