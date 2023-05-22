@@ -5,7 +5,6 @@ class Admin::FoodsController < ApplicationController
   end
   
   def index
-    #@foods = Food.all
     @foods = Food.page(params[:page])
   end
 
@@ -38,9 +37,8 @@ class Admin::FoodsController < ApplicationController
   end
   
   private
-  # ストロングパラメータ
+
   def food_params
     params.require(:food).permit(:food_image, :food_name, :introduction, :genre_id, :tax_free_price, :sales_status)
-    #, :genre_id (:genre)カラムはintegerにを持たせるとエラーが出るため持たせかたを考える。
   end
 end
