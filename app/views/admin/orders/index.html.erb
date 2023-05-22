@@ -7,7 +7,6 @@
           <th>購入日時</th>
           <th>購入者</th>
           <th>注文個数</th>
-          <th>注文ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -16,12 +15,6 @@
             <td><%= link_to admin_order_path(@order.id) do %><%= f.created_at %><% end %></td>
             <td><%= f.name %></td>
             <td><%= f.order_details.order_detail_count %></td>
-            <td><% if order.order_status %>
-            販売中
-            <% else %>
-            販売停止中
-            <% end %>
-            </td>
           </tr>
         <% end %>
       </tbody>

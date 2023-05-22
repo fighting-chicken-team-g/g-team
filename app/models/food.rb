@@ -19,4 +19,5 @@ class Food < ApplicationRecord
   validates :introduction, presence: true
   validates :tax_free_price, presence: true
   #validates :sales_status, presence: true これが入るとエラーになる。
+
 end
