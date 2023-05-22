@@ -28,12 +28,7 @@ Rails.application.routes.draw do
     patch 'carts/:id' => 'carts#update', as: 'update'
     resources :foods, only: [:index, :show]
     resources :orders, only: [:index, :show]
-    resources :deliveries, only: [:index, :edit]
-    resources :carts, only: [:index, :create] do
-      collection do
-        delete 'destroy_all'
-      end
-    end
+    resources :deliveries, only: [:index, :edit, :create, :destroy, :update]
   end
 
   devise_scope :admin do
