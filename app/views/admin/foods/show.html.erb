@@ -1,2 +1,42 @@
-<h1>Admin::Foods#show</h1>
-<p>Find me in app/views/admin/foods/show.html.erb</p>
+<div class="container">
+  <div class="row mt-5 offset-md-1">
+    <h1>商品詳細</h1>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag @food_show.get_food_image(300, 400)%>
+    </div>
+    <div class="col-8">
+      <table>
+        <tr>
+          <th>商品名</th>
+          <td><%= @food_show.food_name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @food_show.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @food_show.genre.genre_name %></td>
+        </tr>
+        <tr>
+          <th>税込価格（税抜価格）</th>
+          <td><%= @food_show.add_tax_sales_price %>(<%= @food_show.tax_free_price %>)</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td><% if @food_show.sales_status %>
+            販売中
+            <% else %>
+            販売停止中
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="button text-center">
+      <%= link_to '商品編集', edit_admin_food_path(@food_show), class:"btn btn-sm btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
