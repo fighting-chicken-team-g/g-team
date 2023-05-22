@@ -7,7 +7,7 @@ class Public::FoodsController < ApplicationController
 
   def show
     @carts = Cart.all
-    @food = Food.all
+    @food = Food.find(params[:id])
   end
 end
 

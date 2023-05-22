@@ -4,14 +4,14 @@
 	</div>
 	<div class="col-xs-offset-1">
 		<div class="product-image">
-			<%= attachment_image_tag(@food, :image, fallback: "no_image.jpg",size: "300x217" ) %>
+			<%= image_tag @food.get_food_image(300, 217) %>
 		</div>
 	</div>
 	<div class="col-xs-5">
 		<div class="detail">
-			<h2><%= @food.name %></h2>
-			<p><%= @food.explanation %></p>
-			<h3 class="food-price">￥<%= (@food.price * 1.1).to_i %><span>（税込）</span></h3>
+			<h2><%= @food.food_name %></h2>
+			<p><%= @food.introduction %></p>
+			<h3 class="food-price">￥<%= (@food.tax_free_price * 1.08).to_i %><span>（税込）</span></h3>
 			<%= form_with(model: @carts, url: carts_path, local: true) do |f| %>
 		      <%= f.label :quantity, "個数選択" %>
 		      <%= f.number_field :quantity, min: 1, max: 100, placeholder: '個数選択', class:"quantity-select-form" %>
