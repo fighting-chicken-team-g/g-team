@@ -3,7 +3,7 @@
         <%#= render 'shared/genre', genres: @genres %>
     </div>
     <div class="col-xs-9">
-        <h2><%= "#{@index}一覧 （全#{@foods_all.count}件）" %></h2>
+        <h2><%= "商品一覧 （全#{@foods.count}件）" %></h2>
         <% @foods.each do |food| %>
             <div class="food-box">
                 <table class="table">
@@ -17,24 +17,13 @@
                         <th><%= link_to food.name, food_path(food) %></th>
                     </tr>
                     <tr>
-                        <th>￥<%= (food.price * 1.1).to_i %></th>
+                        <th>￥<%= (food.price * 0.8).to_i %></th>
                     </tr>
                 </table>
             </div>
         <% end %>
-        <%= paginate @foods %>
+        <%#= paginate @foods %>
     </div>
 </div><div class="row login-row">
-    
-    
-    div id="column" class="column04">
-<h3>4個並び</h3>
-<ul>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-<li><a href=""><img src="./img/noimage.jpg" /><p>商品名</p><span>2,600円</span></a></li>
-</ul>
-</div>
+
+
