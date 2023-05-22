@@ -2,12 +2,13 @@
   <div class="row mt-5 offset-md-1">
     <h1>注文履歴詳細</h1>
   </div>
+  
   <div class="row">
     <div class="col-8 offset-md-2">
       <table>
         <tr>
           <th>購入者</th>
-          <td><%= link_to admin_order_path(@order_show.id) do %><%= @order_show.name %><% end %></td>#
+          <td><%= link_to admin_order_path(@order_show) do %><%= @order_show.name %><% end %></td>#
         </tr>
         <tr>
           <th>注文日</th>
@@ -23,9 +24,9 @@
         </tr>
         <tr>
           <th>注文ステータス</th>
-              <%= form_with model: @order_show, url: admin_foods_path, local: true, method: :post do |f| %>
+              <%= form_with model: @order_show, url: admin_foods_path, local: true, method: :patch do |f| %>
               <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "選択して下さい" %>
-          
+              <%= f.select :user_id, [['入金待ち', 1], ['入金確認', 2]], { include_blank: true }, { id: "user_id", class: "user_class" } %>
           <td><% if @order_show.order_status %>
             販売中
             <% else %>

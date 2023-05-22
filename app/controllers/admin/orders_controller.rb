@@ -4,7 +4,6 @@ class Admin::OrdersController < ApplicationController
   end
   def show
     @order_show = Order.find(params[:id])
-    
   end
   def update
     @order_show = Order.find(params[:id])
