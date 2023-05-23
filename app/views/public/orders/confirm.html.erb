@@ -16,17 +16,17 @@
           <% @cart_foods.each do |cart_food| %>
             <tr>
               <td class="text-left">
-                <%= attachment_image_tag( cart_food.name, :image, size: "60x50", fallback: "no_image.jpg") %>
-                <%= cart_food.food.name %>
+                <%= image_tag cart_food.food.get_food_image(60, 50) %>
+                <%= cart_food.food.food.name %>
               </td>
               <td class="text-right">
-                ¥<%= ((cart_food.food.price_without_tax * 0.8).floor).to_s(:delimited, delimiter: ',') %>
+                ¥<%= cart_food.food.add_tax_sales_price %>
               </td>
               <td class="text-right">
-                  <%= food_name.quantity %>
+                  <%= cart_food.order_count %>
               </td>
               <td class="text-right">
-                ¥<%= ((cart_food.food.price_without_tax * 0.8).floor * food.quantity).to_s(:delimited, delimiter: ',') %>
+                ¥<%= cart_food.order.total_pay %>
               </td>
             </tr>
           <% end %>
@@ -44,13 +44,17 @@
           <tr>
             <th class="info">商品合計</th>
             <td class="text-right">
-              
+              <%#= @total_price %>
+              <td><%#= cart_food.order.subtotal %></td>
+              <td><¥<%= @total.round.to_s(:delimited)%></td>
             </td>
           </tr>
           <tr>
             <th class="info">請求金額</th>
             <td class="text-right">
-              ¥<%= session[:order]["total_price"].to_s(:delimited, delimiter: ',') %>
+          　　 <%= @total_price %>
+           <td><%= cart_food.order.subtotal + 800 %></td>
+           <%#= session[:order]["total_price"].to_s(:delimited, delimiter: ',') %>
             </td>
           </tr>
       </table>
@@ -60,22 +64,30 @@
         <tr>
           <th  class="info">支払方法</th>
           <td class="text-left">
-            <%= session[:order]["payment_method"] %>
+            <%= @order.payment_method_i18n %>
           </td>
         </tr>
         <tr>
           <th  class="info">お届け先</th>
           <td class="text-left">
-            <%= session[:order]["post_code"] %><br>
-            <%= session[:order]["address"] %><br>
-            <%= session[:order]["name"]  %>
+             〒<%= @order.post_code %>
+               <%= @order.address %>
+               <%= @order.name %>
           </td>
         </tr>
       </table>
-
-      <%= link_to "注文を確定する", orders_confirm_path, method: :post, class: 'btn btn-primary col-xs-12' %>
-
-    </div>
-</div>
-
-
+       
+          <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+            <%= f.hidden_field :end_user_id, :value => current_end_user.id %>
+            <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+            <%= f.hidden_field :post_code, :value => @order.post_code %>
+            <%= f.hidden_field :address, :value => @order.address %>
+            <%= f.hidden_field :name, :value => @order.name %>
+            <%= f.hidden_field :total_price, :value => @total + 800 %>
+            <%= f.submit "注文を確定する", class:" ml-5 btn btn-success" %>
+          <% end %>
+      </div>
+     </div>
+  </div>
+   
+  
