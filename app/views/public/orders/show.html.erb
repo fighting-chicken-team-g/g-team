@@ -24,7 +24,7 @@
               <tr>
                 <th class="info">支払方法</th>
                 <td class="text-left">
-                  <%= @order.payment_method %>
+                  <%= @order.payment %>
                 </td>
               </tr>
               <tr>
@@ -43,19 +43,19 @@
             <tr>
               <th class="info">配送料</th>
               <td class="col-xs-5">
-                ¥<%= @order.postage.to_s(:delimited, delimiter: ',') %>
+                ¥<%= @order.delivery_price %>
               </td>
             </tr>
             <tr>
               <th class="info">商品合計</th>
               <td class="col-xs-5">
-                ¥<%= (@order.total_price - @order.postage).to_s(:delimited, delimiter: ',') %>
+                ¥<%= (@order.total_price - @order.delivery_price).to_s(:delimited, delimiter: ',') %>
               </td>
             </tr>
             <tr>
               <th class="info">ご請求額</th>
               <td class="col-xs-5">
-                ¥<%= @order.total_price.to_s(:delimited, delimiter: ',') %>
+                ¥<%= @total + 800 %>
               </td>
             </tr>
         </table>

@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     patch 'end_users/update' => 'end_users#update'
     resources :foods, only: [:index, :show]
     resources :carts, only: [:index]
-    resources :orders, only: [:index, :show, :new, :create]
-    post '/orders/confirm' => 'orders#confirm'
     get '/orders/completed' => 'orders#completed'
+    post '/orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:index, :show, :new, :create]
     resources :deliveries, only: [:index, :edit, :create, :destroy, :update]
   end
 
@@ -40,5 +40,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
- # 注文
+
 
