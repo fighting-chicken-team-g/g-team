@@ -3,40 +3,40 @@
     <div class="col">
       <h3>マイページ</h3>
       <strong>登録情報</strong>
-      <%= link_to '編集する', edit_end_users_path, class: "btn btn-outline-success" %>
-      <table class='table'>
+      <%= link_to '編集する', edit_end_users_path, class: "btn-sm btn-outline-success " %>
+      <table class='table table-bordered'>
         <tr>
-          <td>氏名：</td>
+          <td class="table-secondary col-md-2">氏名：</td>
           <td>
             <%= current_end_user.last_name %>
             <%= current_end_user.first_name %>
           </td>
         </tr>
         <tr>
-          <td>カナ：</td>
+          <td class="table-secondary">カナ：</td>
           <td>
             <%= current_end_user.last_name_read %>
             <%= current_end_user.first_name_read %>
           </td>
         </tr>
         <tr>
-          <td>郵便番号：</td>
+          <td class="table-secondary">郵便番号：</td>
           <td><%= current_end_user.post_code %></td>
         </tr>
         <tr>
-          <td>住所：</td>
+          <td class="table-secondary">住所：</td>
           <td><%= current_end_user.address %></td>
         </tr>
         <tr>
-          <td>電話番号：</td>
+          <td class="table-secondary">電話番号：</td>
           <td><%= current_end_user.tel %></td>
         </tr>
         <tr>
-          <td>メールアドレス：</td>
+          <td class="table-secondary">メールアドレス：</td>
           <td><%= current_end_user.email %></td>
         </tr>
       </table>
-      <%= link_to "退会の手続きはこちら", withdraw_confirm_path %>
+      <%= link_to "退会の手続きはこちら", withdraw_confirm_path, class: 'btn-sm btn-outline-danger' %>
     </div>
   </div>
 </div>
