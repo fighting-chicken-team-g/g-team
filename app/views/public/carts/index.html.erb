@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <h3>ショッピングカート</h3>
-      <%= button_to "全て削除", destroy_all_carts_path, method: :delete %>
+      <%= link_to "カートを空にする", destroy_all_carts_path, method: :delete,class: "btn btn-danger btn-sm" %>
       <table class="table table-bordered">
         <thead>
           <tr class="table-secondary">
@@ -14,26 +14,18 @@
           </tr>
         </thead>
         <tbody>
+          <%= form_with model: Cart, url: carts_path, method: :post do |f| %>
+          <% @carts.each do |cart| %>
           <tr>
-            <td>キャンディ</td>
-            <td>５万円</td>
+            <td><%= cart.food.food_name %></td>
+            <td><%= cart.food.add_tax_sales_price %></td>
             <td>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>選択してください</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select>
+              <%= f.select :order_count, [1,2,3], {include_blank: '選択ボックス'}, class: 'sample' %>
             </td>
-            <td></td>
-            <td><%= button_to "全て削除", destroy_all_carts_path, method: :delete %></td>
+            <td>¥<%= @total_price.round.to_s(:delimited)%></td>
           </tr>
+          <% end %>
+          <% end %>
         </tbody>
       </table>
     </div>
