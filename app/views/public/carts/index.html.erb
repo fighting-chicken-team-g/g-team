@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <h3>ショッピングカート</h3>
-      <%= link_to "カートを空にする", destroy_all_carts_path, method: :delete,class: "btn btn-danger btn-sm" %>
+      <p class="text-right"><%= link_to "カートを空にする", destroy_all_carts_path, method: :delete, class: "btn btn-danger btn-sm m-3" %></p>
       <table class="table table-bordered">
         <thead>
           <tr class="table-secondary">
@@ -14,20 +14,34 @@
           </tr>
         </thead>
         <tbody>
-          <%= form_with model: Cart, url: carts_path, method: :post do |f| %>
           <% @carts.each do |cart| %>
           <tr>
             <td><%= cart.food.food_name %></td>
             <td><%= cart.food.add_tax_sales_price %></td>
             <td>
-              <%= f.select :order_count, [1,2,3], {include_blank: '選択ボックス'}, class: 'sample' %>
+              <%= form_with model: cart, url: update_path(cart.id), method: :patch do |f| %>
+                <%= f.select :order_count, [1,2,3,4,5,6,7,8,9], {include_blank: '選択ボックス'}, class: 'sample' %>
+                <%= f.submit '変更', class: 'btn btn-success' %>
+              <% end %>
             </td>
-            <td>¥<%= @total_price.round.to_s(:delimited)%></td>
+            <td><%= cart.sum_of_price %></td>
+            <td><%= link_to "削除", destroy_path(cart.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
           </tr>
-          <% end %>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
+  <div class="row justify-content-end">
+    <div class="col-md-4">
+      <table class="table border">
+        <tr>
+          <td class="table-secondary">合計金額</td>
+          <td>¥<%= @total.round.to_s(:delimited)%></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <p><%= link_to "買い物を続ける", foods_path, method: :get, class: "btn btn-primary btn-md" %></p>
+  <p class="text-center"><%= link_to "情報入力に進む", foods_path, method: :get, class: "btn btn-success btn-lg" %></p>
 </div>
