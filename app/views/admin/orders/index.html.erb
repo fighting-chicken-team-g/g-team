@@ -10,11 +10,10 @@
         </tr>
       </thead>
       <tbody>
-        <% @order.each do |f| %>
-          <tr>
-            <td><%= link_to admin_order_path(@order.id) do %><%= f.created_at %><% end %></td>
-            <td><%= f.name %></td>
-            <td><%= f.order_details.order_detail_count %></td>
+        <%@order.each do |f| %>
+            <td><%= link_to admin_order_path(@order) do %><%= f.created_at.strftime('%Y/%m/%d') %><% end %></td>
+            <td><%= f.end_user.last_name %><%= f.end_user.first_name %></td>
+            <td><%= f.order_details.count %></td>
           </tr>
         <% end %>
       </tbody>

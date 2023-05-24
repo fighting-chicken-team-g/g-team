@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @order = Order.all(order_params)
+    @order = Order.page(params[:page])
   end
   def show
     @order_show = Order.find(params[:id])
@@ -17,7 +17,6 @@ class Admin::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:created_at, :name, :order_status)
   end
   
 end
