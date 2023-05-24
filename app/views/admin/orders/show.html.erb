@@ -25,6 +25,7 @@
         <tr>
           <th>注文ステータス</th>
               <%= form_with model: @order_show, url: admin_foods_path, local: true, method: :patch do |f| %>
+              <%= f.select :プロパティ名, options_from_collection_for_select(モデル, :フォームで送る値(メソッド), :セレクトボックスに表示する値(メソッド)) %>
               <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "選択して下さい" %>
               <%= f.select :user_id, [['入金待ち', 1], ['入金確認', 2]], { include_blank: true }, { id: "user_id", class: "user_class" } %>
           <td><% if @order_show.order_status %>
