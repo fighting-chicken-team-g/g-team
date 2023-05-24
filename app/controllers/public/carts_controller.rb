@@ -1,5 +1,5 @@
 class Public::CartsController < ApplicationController
-  #before_action :authenticate_user!, except: [:create, :show, :index]
+  before_action :authenticate_end_user!
 
   def create
     @cart = Cart.new(cart_params)

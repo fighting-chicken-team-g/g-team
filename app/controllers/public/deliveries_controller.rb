@@ -1,6 +1,6 @@
 class Public::DeliveriesController < ApplicationController
   def index
-    @deliveries = Delivery.all
+    @deliveries = current_end_user.deliveries
     @delivery = Delivery.new
   end
 
@@ -13,7 +13,9 @@ class Public::DeliveriesController < ApplicationController
      @deliveries = Delivery.new(delivery_params)
      @deliveries.end_user_id = current_end_user.id
      if @deliveries.save
-      redirect_to deliveries_path
+       redirect_to deliveries_path
+     else
+       redirect_to request.referer
      end
   end
 
