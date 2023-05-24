@@ -19,9 +19,12 @@ class Public::OrdersController < ApplicationController
   def confirm
     @carts = current_end_user.carts.all
     @order = Order.new(order_params)
-    @order.order_status = 0
+    @order.payment = 0
     @order.delivery_price = 800 # 送料円 #
-    @total = @carts.inject(0) { |sum, cart| sum + cart.subtotal }
+    @total = 0
+    @carts.each do |cart|
+      @total += cart.sum_of_price
+    end
     #@total_price = Total_price
     if params[:order][:select_address] == "0"
        @order.post_code = current_end_user.post_code
@@ -49,10 +52,11 @@ class Public::OrdersController < ApplicationController
     @carts.each do |cart|
       @order_detail = OrderDetail.new
       @order_detail.order_id = @order.id
-      @order_detail.food_id = cart.food_id
-      @order_detail.tax_price = cart.tax_price
-      @order_detail.tax_price = cart.subtotal
-      @order_detail.is_making = 0
+      @order_detail.food_id = cart.food_id #cart.food.add_tax_sales_price
+      @order_detail.tax_price = cart.food.add_tax_sales_price#(cart.food.tax_free_price * 1.1).round
+     # @order_detail.tax_price = cart.sum_of_price
+      @order_detail.production_status = 0
+      @order_detail.order_detail_count = cart.order_count
       @order_detail.save
     end
     current_end_user.carts.destroy_all
