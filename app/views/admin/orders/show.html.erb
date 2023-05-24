@@ -53,6 +53,7 @@
             <td><%= order.food.food_name %></td>
             <td><%= order.food.add_tax_sales_price %></td>
             <td><%= order.order_detail_count %></td>
+            <td><%= order.order_detail_count*order.food.add_tax_sales_price %></td>
             <td>
               <select class="form-select" aria-label="Default select example">
                 <option selected>選択して下さい</option>
