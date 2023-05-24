@@ -27,6 +27,7 @@
                 <% @foods.last(4).each do |foods| %>
                     <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
                         <%= link_to foods_path, style: "color: black;", data: {"turbolinks" => false} do %>
+                             <%= image_tag foods.get_food_image(100, 100)%>
                             <%#= attachment_image_tag food, :image, :fill, 180, 125, format: 'jpeg',fallback: "no_image.jpg" %>
                             <%= foods.food_name %><br>
                             ¥<%= foods.tax_free_price.to_s(:delimited, delimiter: ',') %>
