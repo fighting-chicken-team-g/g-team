@@ -7,16 +7,18 @@ class Admin::OrdersController < ApplicationController
   end
   def update
     @order_show = Order.find(params[:id])
-    if @food.update(food_params)
-      redirect_to admin_foods_path
-    else
-      render "edit"
-    end
+      if@order_show.update(order_params)
+        flash[:notice] = "更新しました"
+        redirect_to admin_order_path
+      else
+        render "show"
+      end
   end
-  
+
   private
 
   def order_params
+  params.require(:order).permit(:order_status)
   end
-  
+
 end
