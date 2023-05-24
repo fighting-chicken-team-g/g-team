@@ -12,12 +12,12 @@
 			<h2><%= @food.food_name %></h2>
 			<p><%= @food.introduction %></p>
 			<h3 class="food-price">￥<%= (@food.tax_free_price * 1.08).to_i %><span>（税込）</span></h3>
-			<%= form_with(model: @carts, url: carts_path, local: true) do |f| %>
-		      <%= f.label :quantity, "個数選択" %>
-		      <%= f.number_field :quantity, min: 1, max: 100, placeholder: '個数選択', class:"quantity-select-form" %>
-		      <%= f.hidden_field :id, :value => @food.id %>
-		      <%= f.submit "カートに入れる", class: "btn btn-primary" %>
-		    <% end %>
+		  <%= form_with(model: @cart_new, url: carts_path, local: true) do |f| %>
+	      <%= f.label :order_count, "個数選択" %>
+	      <%= f.number_field :order_count, placeholder: '個数選択', class:"order_count-select-form" %>
+	      <%= f.hidden_field :food_id, :value => @food.id %>
+	      <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+	    <% end %>
 		</div>
 	</div>
 </div>
