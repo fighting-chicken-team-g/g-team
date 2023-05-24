@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   def sum_of_price
     food.add_tax_sales_price * order_count
   end
+  #validates :order_status, presence: true意味なかった選択してくださいで更新可能。
 end
   #def subtotal  #この記載はcart.rbにもっていく。ここは消す#
    # food.add_tax_sales_price * order_count

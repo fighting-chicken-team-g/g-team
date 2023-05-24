@@ -28,7 +28,7 @@
           <th>注文ステータス</th>
           <td>
             <%= form_with model: @order_show, url: admin_order_path(@order_show), method: :patch do |f| %>
-              <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2], ["発送準備", 3], ["発送済み", 4]], include_blank: "選択して下さい" %>
+              <%= f.select :order_status_i18n, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2], ["発送準備", 3], ["発送済み", 4]], include_blank: "選択して下さい" %>
               <%= f.submit '更新', class: 'btn btn-success' %>
             <% end %>
           </td>
