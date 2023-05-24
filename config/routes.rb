@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top' => 'homes#top'
-    resources :end_users, only: [:index, :show, :edit]
+    resources :end_users, only: [:index, :show, :edit, :update]
     resources :foods, only: [:new, :index, :show, :edit, :create, :update]
     resources :orders, only: [:show]
     resources :genres, only: [:index, :edit, :create, :update]
@@ -24,12 +24,19 @@ Rails.application.routes.draw do
     get '/end_users/mypage' => 'end_users#show'
     get 'end_users/infomation/edit' => 'end_users#edit', as: 'edit_end_users'
     patch 'end_users/update' => 'end_users#update'
+    patch 'carts/:id' => 'carts#update', as: 'update'
     resources :foods, only: [:index, :show]
     resources :carts, only: [:index]
     get '/orders/completed' => 'orders#completed'
     post '/orders/confirm' => 'orders#confirm'
     resources :orders, only: [:index, :show, :new, :create]
     resources :deliveries, only: [:index, :edit, :create, :destroy, :update]
+    resources :carts, only: [:index, :create] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    delete 'carts/:id' => 'carts#destroy', as: 'destroy'
   end
 
   devise_scope :admin do
