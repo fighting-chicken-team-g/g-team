@@ -1,6 +1,6 @@
 class Public::DeliveriesController < ApplicationController
   def index
-    @deliveries = Delivery.all
+    @deliveries = current_end_user.deliveries
     @delivery = Delivery.new
   end
 
