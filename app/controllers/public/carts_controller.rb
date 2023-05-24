@@ -1,8 +1,10 @@
 class Public::CartsController < ApplicationController
+  #before_action :authenticate_user!, except: [:create, :show, :index]
+
   def create
     @cart = Cart.new(cart_params)
     @cart.end_user_id = current_end_user.id
-    @carts =current_end_user.carts.all
+    @carts = current_end_user.carts.all
     @carts.each do |cart|
       if cart.food_id == @cart.food_id
         new_order_count = cart.order_count + @cart.order_count
