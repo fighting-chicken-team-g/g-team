@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if end_user_signed_in? %>
-          <h3 class="col mx-auto mt-2">ようこそ、<%= current_end_user.last_name %>さん！</h3>
+          <h3 class="col mx-auto mt-2">ようこそ、<%= current_end_user.last_name %>さん！<%= render "searches/search" %></h3>
           <li>
             <%= link_to 'マイページ', end_users_mypage_path, class:'nav-link text-dark btn btn-outline-secondary m-2' %>
           </li>

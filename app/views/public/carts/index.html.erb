@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col mt-3">
-      <h3>ショッピングカート</h3>
+    <div class="col text-center">
+      <h3 class="mt-4">ショッピングカート</h3>
       <p class="text-right"><%= link_to "カートを空にする", destroy_all_carts_path, method: :delete, class: "btn btn-danger m-3" %></p>
       <table class="table table-bordered">
         <thead>
@@ -17,14 +17,14 @@
           <% @carts.each do |cart| %>
           <tr>
             <td><%= cart.food.food_name %></td>
-            <td><%= cart.food.add_tax_sales_price %></td>
+            <td>¥<%= cart.food.add_tax_sales_price %></td>
             <td>
               <%= form_with model: cart, url: update_path(cart.id), method: :patch do |f| %>
-                <%= f.select :order_count, [1,2,3,4,5,6,7,8,9], {include_blank: '--選択してください--'}, class: 'sample' %>
+                <%= f.select :order_count, [1,2,3,4,5,6,7,8,9], class: 'sample' %>
                 <%= f.submit '変更', class: 'btn btn-success' %>
               <% end %>
             </td>
-            <td><%= cart.sum_of_price %></td>
+            <td>¥<%= cart.sum_of_price %></td>
             <td><%= link_to "削除", destroy_path(cart.id), method: :delete, class: "btn btn-secondary btn-sm" %></td>
           </tr>
           <% end %>
