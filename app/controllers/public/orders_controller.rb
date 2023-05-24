@@ -6,14 +6,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @orders = current_end_user.orders#.find(params[:id])
+    @orders = current_end_user.orders.find(params[:id])
   end
 
   def new
     @order = Order.new
+    @deliveries = current_end_user.deliveries
     @orders = current_end_user.orders
     #@client = Client.find(current_end_user.id)
-    @deliveries = current_end_user.deliveries
   end
 
   def confirm
