@@ -24,10 +24,16 @@ Rails.application.routes.draw do
     get '/end_users/mypage' => 'end_users#show'
     get 'end_users/infomation/edit' => 'end_users#edit', as: 'edit_end_users'
     patch 'end_users/update' => 'end_users#update'
+    patch 'carts/:id' => 'carts#update', as: 'update'
     resources :foods, only: [:index, :show]
-    resources :carts, only: [:index]
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:new, :index, :show]
     resources :deliveries, only: [:index, :edit, :create, :destroy, :update]
+    resources :carts, only: [:index, :create] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    delete 'carts/:id' => 'carts#destroy', as: 'destroy'
   end
 
   devise_scope :admin do
