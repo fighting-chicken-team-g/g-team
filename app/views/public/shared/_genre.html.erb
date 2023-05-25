@@ -1,0 +1,42 @@
+<%table class="table table-bordered genre_search_table">
+  <thead>
+    <tr class="table-head">
+    <th class="genre_search_head">ジャンル検索</th>
+    </tr>
+    </thead>
+<tbody>
+   <% genres.each do |genre| %>
+<%tr>
+<td class="table-body">
+  <%= link_to genre.name, products_path(genre_id: genre.id),class:"genre_search_name" %>
+<%/td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+
+<div class="food-index-box">
+
+    <!-- ジャンル選択のサイドバー -->
+    <%= render "foods/genres_sidebar", genres: @genres %>
+    <!-- ジャンル選択のサイドバー -->
+    <div class="food-index">
+    <h3>ジャンル検索</h3>
+        <table>
+          <tbody>
+            <tr class="food-box">
+              <% @genre.genres.each do |genre| %>
+                <td class="food">
+                    <%= link_to food_path(food) do %>
+                      <%= attachment_image_tag(food, :image, :fill, 300, 300, fallback:"top.image.jpg") %><br>
+                      <%= food.name %><br>
+                      ￥<%= food.price %>
+                    <% end %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
