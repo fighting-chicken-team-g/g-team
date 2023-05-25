@@ -24,13 +24,13 @@
               <tr>
                 <th class="info">支払方法</th>
                 <td class="text-left">
-                  <%= @order.payment %>
+                  <%= @order.payment_i18n %>
                 </td>
               </tr>
               <tr>
                 <th class="info">ステータス</th>
                 <td class="text-left">
-                  <%= @order.order_status %>
+                  <%= @order.order_status_i18n %>
                 </td>
               </tr>
           </tbody>
@@ -74,10 +74,15 @@
           <tbody>
         	<% @order_details.each do |order_detail| %>
             <tr>
-                <td><%= order_detail.food.name %></td>
-                <td>¥<%= (order_detail.food.price_without_tax * 0.8).floor.to_s(:delimited, delimiter: ',') %></td>
-                <td><%= order_detail.quantity %></td>
-                <td>¥<%= ((order_detail.food.price_without_tax * 0.8).floor * (order_detail.quantity)).to_s(:delimited, delimiter: ',') %></td>
+                <!--<td><%#= order_detail.food.id %></td>-->
+                <td>
+
+                  <%= order_detail.food.food_name %>
+
+                </td>
+                <td>¥<%= order_detail.food.add_tax_sales_price %></td>
+                <td><%= order_detail.order_detail_count %></td>
+                <td>¥<%= order_detail.sum_of_price %></td>
             </tr>
           <% end %>
           </tbody>
