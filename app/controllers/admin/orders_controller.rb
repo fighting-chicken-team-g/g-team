@@ -7,7 +7,7 @@ class Admin::OrdersController < ApplicationController
   end
   def update
     @order_show = Order.find(params[:id])
-      if@order_show.update(order_params)
+      if @order_show.update(order_params)
         flash[:notice] = "更新しました"
         redirect_to request.referer
       else
