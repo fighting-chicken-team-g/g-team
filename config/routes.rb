@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :foods, only: [:new, :index, :show, :edit, :create, :update]
-    resources :orders, only: [:show]
+    resources :orders, only: [:index, :show, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :deliveries, only: [:index, :edit]
   end
