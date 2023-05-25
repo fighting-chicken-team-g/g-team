@@ -11,7 +11,7 @@ class Public::FoodsController < ApplicationController
     @cart_new = Cart.new
     @food = Food.find(params[:id])
     @genres = Genre.all
-    @genre = Genre.find(params[:id])
+    @genre = @food.genre
   end
 end
 
