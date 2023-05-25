@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :foods, only: [:new, :index, :show, :edit, :create, :update]
-    resources :orders, only: [:show]
+    resources :orders, only: [:index, :show, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :deliveries, only: [:index, :edit]
   end
@@ -26,7 +26,10 @@ Rails.application.routes.draw do
     patch 'end_users/update' => 'end_users#update'
     patch 'carts/:id' => 'carts#update', as: 'update'
     resources :foods, only: [:index, :show]
-    resources :orders, only: [:new, :index, :show]
+    resources :carts, only: [:index]
+    get '/orders/completed' => 'orders#completed'
+    post '/orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:index, :show, :new, :create]
     resources :deliveries, only: [:index, :edit, :create, :destroy, :update]
     resources :carts, only: [:index, :create] do
       collection do
@@ -43,3 +46,6 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+
+

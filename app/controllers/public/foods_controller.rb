@@ -1,4 +1,6 @@
 class Public::FoodsController < ApplicationController
+  before_action :authenticate_end_user!, except: [:show, :index]
+
   def index
     @genre = Genre.all
     @foods = Food.all

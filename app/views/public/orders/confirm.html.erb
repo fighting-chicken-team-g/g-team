@@ -26,7 +26,7 @@
                   <%= cart.order_count %>
               </td>
               <td class="text-right">
-                ¥<%= cart.order.total_pay %>
+                ¥<%= cart.sum_of_price %>
               </td>
             </tr>
           <% end %>
@@ -37,28 +37,20 @@
       <table class="table table-hover table-condensed table-bordered">
           <tr>
             <th class="info">配送料</th>
-            <td class="text-right col-xs-5">
-              <%= @order.delivery_price %>
-            </td>
+            <!--<td class="text-right col-xs-5">-->
+            <td><%= @order.delivery_price %></td>
           </tr>
           <tr>
             <th class="info">商品合計</th>
-            <td class="text-right">
-              <%#= @total_price %>
-              <td><%#= cart_food.order.subtotal %></td>
-              <td><¥<%= @total.round.to_s(:delimited)%></td>
-            </td>
+            <!--<td class="text-right">-->
+            <td>¥<%= @total.round.to_s(:delimited)%></td>
+            <!--</td>-->
           </tr>
           <tr>
             <th class="info">請求金額</th>
-            <td class="text-right">
-              <%= @total %>
+            <!--<td class="text-right">-->
            <td><%= @total + 800 %></td>
-
-
-
-           <%#= session[:order]["total_price"].to_s(:delimited, delimiter: ',') %>
-            </td>
+          <!--</td>-->
           </tr>
       </table>
     </div>
@@ -67,7 +59,7 @@
         <tr>
           <th  class="info">支払方法</th>
           <td class="text-left">
-            <%= @order.payment %>
+            <%= @order.payment_i18n %>
           </td>
         </tr>
         <tr>
