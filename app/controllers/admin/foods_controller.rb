@@ -3,7 +3,7 @@ class Admin::FoodsController < ApplicationController
   def new
   @food = Food.new
   end
-  
+
   def index
     @foods = Food.page(params[:page])
   end
@@ -11,7 +11,7 @@ class Admin::FoodsController < ApplicationController
   def create
     @food = Food.new(food_params)
       if @food.save
-        redirect_to admin_foods_path
+        redirect_to admin_food_path(@food)
       else
         render :new
       end
@@ -24,8 +24,8 @@ class Admin::FoodsController < ApplicationController
   def edit
     @food = Food.new
     @food_edit = Food.find(params[:id])
-    
-    
+
+
   end
   def update
     @food =Food.find(params[:id])
@@ -35,7 +35,7 @@ class Admin::FoodsController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
 
   def food_params
