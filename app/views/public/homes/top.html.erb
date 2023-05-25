@@ -1,41 +1,42 @@
 <div class="jumbotron" style="background-image: url('assets/eclair-g.jpg'); background-size:cover;">
   <div class="container px-5 px-sm-0">
     <div class="row">
-    <div class="col-2">
-      <%#= render'public/shared/genre', genres: @genres %>
-    </div>
-   <%#div class="col-8">
-      <%= yield %>
-</div>
-  <div class="row text-center" style="align-items: center;">
-    <h1 class="px-3 mx-auto">
-      <div><h1>ようこそ、ながのCAKEへ！</h1>
-      <p><h5>このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。</h5><br>
+      <div class="col-2">
+       <%#= render'public/shared/genre', genres: @genres %>
       </div>
+        <%#div class="col-8">
+        <%= yield %>
+    </div>
+  
+    <div class="row text-center" style="align-items: center;">
+        <h1 class="px-3 mx-auto">
+            <div><h1>ようこそ、ながのCAKEへ！</h1>
+            <p><h2>このサイトは、ケーキ販売のECサイトになります。<br>
+                   会員でない方も商品の閲覧はできますが、<br>
+                   購入には会員登録が必要になります。</h2><br>
+            </div>
+    </div>
   </div>
+</div>
 
   <div class="row text-center" style="align-items: center;">
-    <h1 class="px-3 mx-auto">新着商品</h1>
+    <h3 class="px-3 mx-auto">新着商品</h3>
   </div>
- </div>
-
-        <!-- 商品を4つ表示するようにする -->
-        <div class="col-xs-9 col-xs-offset-1">
-            <div class="item--card-content">
-                <% @foods.last(4).each do |foods| %>
-                    <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
-                        <%= link_to foods_path, style: "color: black;", data: {"turbolinks" => false} do %>
-                             <%= image_tag foods.get_food_image(100, 100)%>
-                            <%#= attachment_image_tag food, :image, :fill, 180, 125, format: 'jpeg',fallback: "no_image.jpg" %>
-                            <%= foods.food_name %><br>
-                            ¥<%= foods.tax_free_price.to_s(:delimited, delimiter: ',') %>
-                        <% end %>
-                    </div>
-                <% end %>
+    <!--<div class="col-xs-9 col-xs-offset-1">-->
+    <!--<div class="item--card-content">-->
+     <div class="row">
+         <% @foods.first(4).each do |foods| %>
+      <!--<div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">-->
+          <%= link_to foods_path, style: "color: black;", data: {"turbolinks" => false} do %>
+            <%= image_tag foods.get_food_image(100, 100)%>
+            <%= foods.food_name %><br>
+            ¥<%= foods.tax_free_price.to_s(:delimited, delimiter: ',') %>
+        <% end %>
+    </div>
+        <% end %>
       </div>
     </div>
- <h4><%= link_to "全ての商品を見る", foods_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %></h4>
-</div>
+    </div>
+<div>    
+ <h6><%= link_to "全ての商品を見る", foods_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %></h6>
 </div>
