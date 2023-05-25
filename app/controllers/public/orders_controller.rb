@@ -5,7 +5,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @orders = current_end_user.orders.find(params[:id])
+    @order = current_end_user.orders.find(params[:id])
+     @order_details = @order.order_details
+     @total = 0
+     @order.order_details.each do |order_detail|
+     @total += order_detail.sum_of_price
+    end
   end
 
   def new
