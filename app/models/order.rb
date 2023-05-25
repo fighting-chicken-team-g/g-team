@@ -7,10 +7,5 @@ class Order < ApplicationRecord
   def sum_of_price
     food.add_tax_sales_price * order_count
   end
-  #validates :order_status, presence: true意味なかった選択してくださいで更新可能。
 
- 　　#def subtotal  #この記載はcart.rbにもっていく。ここは消す#
-   # food.add_tax_sales_price * order_count
-  #end
-  #enum order_status: { waiting_for_payment: 0, payment_confirmation: 1, making: 2, shipping_preparation: 3, shipping_completed: 4 }
 end

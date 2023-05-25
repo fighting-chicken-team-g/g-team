@@ -2,7 +2,7 @@ class Cart < ApplicationRecord
   belongs_to :end_user
   belongs_to :food
 
-  def add_tax_sales_price
+    def add_tax_sales_price
   (tax_free_price * 1.08).round
   end
 
