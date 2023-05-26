@@ -1,5 +1,5 @@
 class Admin::FoodsController < ApplicationController
-
+before_action :authenticate_admin!
   def new
   @food = Food.new
   end
