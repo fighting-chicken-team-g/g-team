@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @carts = current_end_user.carts.all
     @order = Order.new(order_params)
-    @order.payment = 0
+    #@order.payment = 0
     @order.delivery_price = 800 # 送料円 #
     @total = 0
     @carts.each do |cart|

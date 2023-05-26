@@ -3,7 +3,7 @@ before_action :authenticate_admin!
   def new
   @food = Food.new
   end
-  
+
   def index
     @foods = Food.page(params[:page])
   end
@@ -11,7 +11,7 @@ before_action :authenticate_admin!
   def create
     @food = Food.new(food_params)
       if @food.save
-        redirect_to admin_foods_path
+        redirect_to admin_food_path(@food)
       else
         render :new
       end
@@ -24,8 +24,8 @@ before_action :authenticate_admin!
   def edit
     @food = Food.new
     @food_edit = Food.find(params[:id])
-    
-    
+
+
   end
   def update
     @food =Food.find(params[:id])
@@ -35,7 +35,7 @@ before_action :authenticate_admin!
       render "edit"
     end
   end
-  
+
   private
 
   def food_params

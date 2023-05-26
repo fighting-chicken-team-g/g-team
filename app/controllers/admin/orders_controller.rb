@@ -1,8 +1,14 @@
 class Admin::OrdersController < ApplicationController
-  before_action :authenticate_admin!, except: [:index]
+
+  before_action :authenticate_admin!
   def index
     @order = Order.page(params[:page])
   end
+
+  #def index
+    #@order = Order.page(params[:page])
+  #end
+
   def show
     @order_show = Order.find(params[:id])
   end

@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <h1>商品一覧</h1>
+    <div class="col-3 offset-9">
+      <%= link_to "新商品登録", new_admin_food_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="row">
     <table class='table'>
       <thead>
         <tr>
@@ -16,7 +21,7 @@
           <tr>
             <td><%= food.id %></td>
             <td><%= link_to admin_food_path(food.id) do %><%= food.food_name %><% end %></td>
-            <td><%= food.tax_free_price %></td>
+            <td>¥<%= food.tax_free_price %></td>
             <td><%= food.genre.genre_name %></td>
             <td><% if food.sales_status %>
             販売中

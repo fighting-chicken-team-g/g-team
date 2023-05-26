@@ -23,6 +23,12 @@ class Admin::EndUsersController < ApplicationController
     end
   end
 
+  def order_index
+    @end_user = EndUser.find(params[:id])
+    @orders = @end_user.orders.page(params[:page])
+  end
+  
+
   private
   # ストロングパラメータ
   def end_user_params
