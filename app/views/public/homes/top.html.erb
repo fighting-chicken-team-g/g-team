@@ -1,20 +1,23 @@
+<%= notice %>
 <div class="jumbotron" style="background-image: url('assets/christmas.jpg'); background-size:cover;">
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-2">
        <%#= render'public/shared/genre', genres: @genres %>
       </div>
-        <%#div class="col-8">
-        <%= yield %>
+      <%#div class="col-8">
+      <%= yield %>
     </div>
-
     <div class="row text-center" >
-      <div class="col">
-
-            <h1>ようこそ、ながのcakeへ！</h1>
-            <p><h2>このサイトは、ケーキ販売のECサイトになります。<br>
-                   会員でない方も商品の閲覧はできますが、<br>
-                   購入には会員登録が必要になります。</h2><br>
+      <div class="col-8 d-grid gap-2 mx-auto mt-4 bg-light" style="border-radius: 30px;">
+        <h1>ようこそ、ながのcakeへ！</h1>
+        <p>
+          <h2>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </h2>
+        </p>
       </div>
     </div>
   </div>
@@ -36,10 +39,12 @@
           <%= foods.food_name %><br>
           ¥<%= foods.tax_free_price.to_s(:delimited, delimiter: ',') %>
         <% end %>
-         </div>
-        <% end %>
-      </div>
-    </div>
+     </div>
+   <% end %>
+  </div>
+</div>
 <div>
- <h6 class="text-right"><%= link_to "全ての商品を見る", foods_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %></h6>
+  <h6 class="text-right">
+    <%= link_to "全ての商品を見る", foods_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %>
+  </h6>
 </div>
