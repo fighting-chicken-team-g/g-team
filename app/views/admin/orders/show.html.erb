@@ -51,7 +51,7 @@
         <% @order_show.order_details.each do |order| %>
           <tr>
             <td><%= order.food.food_name %></td>
-            <td><%= order.food.add_tax_sales_price %></td>
+            <td>¥<%= order.food.add_tax_sales_price %></td>
             <td><%= order.order_detail_count %></td>
             <td><%= order.order_detail_count*order.food.add_tax_sales_price %></td>
             <td>
