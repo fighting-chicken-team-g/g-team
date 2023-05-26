@@ -46,9 +46,7 @@
       </div>
     </div>
   </div>
-  <% unless @carts == nil %>
-  <p class="text-center"><%= link_to "情報入力に進む", new_order_path, method: :get, class: "btn btn-info btn-lg" %></p>
-  <% else %>
-  <p class="text-center"><%= link_to "情報入力に進む", destroy_all_carts_path, method: :get, class: "btn btn-info btn-lg" %></p>
+  <% if @carts.exists? %>
+    <p class="text-center"><%= link_to "情報入力に進む", new_order_path, method: :get, class: "btn btn-info btn-lg" %></p>
   <% end %>
 </div>
