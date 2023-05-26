@@ -4,6 +4,10 @@ class Order < ApplicationRecord
   enum order_status: { waiting_pay: 0, check_pay: 1, creating: 2, preparing_send: 3, already_send: 4 }
   enum payment: { credit_card: 0, transfer: 1 }
 
+  def add_tax_sales_price
+    (tax_free_price * 1.1).round
+  end
+
   def sum_of_price
     food.add_tax_sales_price * order_count
   end

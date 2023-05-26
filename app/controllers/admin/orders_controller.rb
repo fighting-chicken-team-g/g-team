@@ -11,6 +11,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order_show = Order.find(params[:id])
+    @carts = current_end_user.carts.all
   end
   def update
     @order_show = Order.find(params[:id])
