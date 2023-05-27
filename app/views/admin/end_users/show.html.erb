@@ -1,13 +1,12 @@
-<div class="container">
-  <div class="row mt-5 offset-md-1">
-    <h1><%= @end_user.last_name %><%= @end_user.first_name %>様の会員詳細</h1>
+<div class="container p-5">
+  <div class="row offset-md-1">
+    <div class="col-8 mx-auto pb-4">
+      <h1><%= @end_user.last_name %><%= @end_user.first_name %>様の会員詳細</h1>
+    </div>
   </div>
   <div class="row">
-    <div class="col-4">
-
-    </div>
-    <div class="col-8">
-      <table>
+    <div class="col-8 mx-auto">
+      <table class="table">
         <tr>
           <th>会員ID</th>
           <td><%= @end_user.id %></td>
@@ -46,11 +45,13 @@
           </td>
         </tr>
       </table>
-      <div class="button text-center">
-      <%= link_to '編集する', edit_admin_end_user_path(@end_user), class:"btn btn-sm btn-success" %>
+    </div>
+    <div class="col-10 d-grid gap-2 d-md-flex justify-content-md-end">
+      <div>
+        <%= link_to '編集する', edit_admin_end_user_path(@end_user), class:"btn btn-sm btn-success mr-2" %>
       </div>
-      <div class="button text-center">
-      <%= link_to '注文履歴一覧を見る', admin_path(@end_user), class:"btn btn-sm btn-primary" %>
+      <div>
+        <%= link_to '注文履歴一覧を見る', admin_path(@end_user), class:"btn btn-sm btn-primary" %>
       </div>
     </div>
   </div>
