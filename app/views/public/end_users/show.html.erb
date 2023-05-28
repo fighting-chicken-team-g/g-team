@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 d-grid gap-2 mx-auto">
+      <h3 class="text-center m-4">マイページ</h3>
+      <strong>登録情報</strong>
+      <%= link_to '編集する', edit_end_users_path, class: "btn btn-outline-success btn-sm" %>
+      <table class='table table-bordered mt-2'>
+        <tr>
+          <td class="table-secondary col-md-2">氏名：</td>
+          <td>
+            <%= current_end_user.last_name %>
+            <%= current_end_user.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-secondary">カナ：</td>
+          <td>
+            <%= current_end_user.last_name_read %>
+            <%= current_end_user.first_name_read %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-secondary">郵便番号：</td>
+          <td><%= current_end_user.post_code %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">住所：</td>
+          <td><%= current_end_user.address %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">電話番号：</td>
+          <td><%= current_end_user.tel %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">メールアドレス：</td>
+          <td><%= current_end_user.email %></td>
+        </tr>
+      </table>
+      <strong>配送先：<%= link_to "一覧を見る", deliveries_path, class: 'btn-md btn-outline-primary' %></strong><br>
+      <strong>注文履歴：<%= link_to "一覧を見る", orders_path, class: 'btn-md btn-outline-primary' %></strong>
+    </div>
+  </div>
+</div>

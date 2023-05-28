@@ -1,0 +1,43 @@
+<%= alert %>
+<div class="jumbotron" style="background-image: url('assets/cake.jpg'); background-size:cover; background-position: bottom;">
+  <div class="container px-5 px-sm-0">
+    <div class="row d-grid gap-2 d-md-flex justify-content-md-end" >
+      <div class="col-5 mt-4 text-dark" style="font-family: HiraMinProN-W3; background-color: #fffaf0;">
+        <h2><strong>ようこそ、ながのcakeへ🍴</strong></h2>
+        <p>
+          <h4 class="mt-4">
+            ながのケーキは、ケーキ販売サイトです。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。<br>
+            当店の一番人気はチーズケーキです！<br>
+            ショートケーキもとても美味しいので、<br>
+            是非商品ページからご覧くださいね♪
+          </h4>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center" style="align-items: center;  font-family: HiraMinProN-W3;">
+    <h1 class="px-3 mx-auto m-3">新着商品</h1>
+</div>
+    <!--<div class="col-xs-9 col-xs-offset-1">-->
+    <!--<div class="item--card-content">-->
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <% @foods.last(4).each do |foods| %>
+      <div class="col-3">
+        <!--<div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">-->
+        <%= link_to food_path(foods.id), style: "color: black;", data: {"turbolinks" => false} do %>
+          <%= image_tag foods.get_food_image(180, 180)%><br>
+          <%= foods.food_name %><br>
+          ¥<%= foods.tax_free_price.to_s(:delimited, delimiter: ',') %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2">
+      <%= link_to "全ての商品を見る", foods_path, class: "btn btn-primary" %>
+  </div>
+</div>
