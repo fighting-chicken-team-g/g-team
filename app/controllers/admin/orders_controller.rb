@@ -14,9 +14,11 @@ class Admin::OrdersController < ApplicationController
   end
   def update
     @order_show = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: params[:id])
       if @order_show.update(order_params)
-        flash[:notice] = "更新しました"
-        redirect_to request.referer
+         @order_details.update_all(production_status: "production_wait") if @order_show.order_status == "check_pay"
+         flash[:notice] = "更新しました"
+         redirect_to request.referer
       else
         render "show"
       end
