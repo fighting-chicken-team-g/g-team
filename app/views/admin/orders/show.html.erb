@@ -30,7 +30,7 @@
           <th>注文ステータス</th>
           <td>
             <%= form_with model: @order_show, url: admin_order_path(@order_show), method: :patch do |f| %>
-              <%= f.select :order_status, Order.order_statuses_i18n.invert,{}%>
+              <%= f.select :order_status, Order.order_statuses_i18n.invert,{} %>
               <%= f.submit '更新', class: 'btn btn-success' %>
             <% end %>
           </td>
@@ -52,18 +52,17 @@
         </thead>
         <tbody>
           <% @order_show.order_details.each do |order| %>
+
             <tr>
               <td><%= order.food.food_name %></td>
               <td>¥<%= order.food.add_tax_sales_price %></td>
               <td><%= order.order_detail_count %></td>
               <td><%= order.order_detail_count*order.food.add_tax_sales_price %></td>
               <td>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>選択して下さい</option>
-                  <option value="1">着手不可</option>
-                  <option value="2">着手可</option>
-                </select>
-                <%= submit_tag '変更', class: 'btn btn-success' %>
+                <%= form_with model: order, url: admin_order_detail_path(order), method: :patch do |f| %>
+                  <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert,{} %>
+                  <%= submit_tag '変更', class: 'btn btn-success' %>
+                <% end %>
               </td>
             </tr>
           <% end %>

@@ -33,12 +33,14 @@ class Public::CartsController < ApplicationController
   def destroy
     @cart = Cart.find(params[:id])
     @cart.destroy
+    flash[:notice] = '商品を削除しました。'
     redirect_to request.referer
   end
 
   def destroy_all
     Cart.destroy_all
     current_end_user.carts.destroy_all
+    flash[:notice] = 'カートを空にしました。'
     redirect_to request.referer
   end
 

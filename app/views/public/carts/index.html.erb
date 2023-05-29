@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto text-center">
@@ -37,7 +38,7 @@
         <table class="table border col-4">
           <tr>
             <td class="table-secondary">合計金額</td>
-            <td>¥<%= @total.round.to_s(:delimited)%></td>
+            <td>¥<%= @total.round.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>

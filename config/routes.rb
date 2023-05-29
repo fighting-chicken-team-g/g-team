@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'end_users/:id/order_index' => 'end_users#order_index'
     resources :foods, only: [:new, :index, :show, :edit, :create, :update]
     resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :deliveries, only: [:index, :edit]
   end
